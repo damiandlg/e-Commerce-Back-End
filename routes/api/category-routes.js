@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       },
     ],
   })
-  .then(dbUserData => res.json(dbUserData))
+  .then(dbCategoryData => res.json(dbCategoryData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -31,12 +31,12 @@ router.get('/:id', (req, res) => {
     },
     ],
   })
-    .then(dbUserData => {
-      if (!dbUserData) {
+    .then(dbCategoryData => {
+      if (!dbCategoryData) {
         res.status(404).json({ message: 'No user found with this id' });
         return;
       }
-      res.json(dbUserData);
+      res.json(dbCategoryData);
     })
     .catch(err => {
       console.log(err);
