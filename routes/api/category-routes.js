@@ -1,11 +1,10 @@
 const router = require('express').Router();
-const { UPSERT } = require('sequelize/types/lib/query-types');
 const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
 router.get('/', (req, res) => {
-  UPSERT.findAll({
+  Category.findAll({
     attributes: ["id", "category_name"],
     include: [
       {
@@ -57,7 +56,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  Category.update(req.body, (
+  Category.update(
     {
       category_name: req.body.category_name,
     },
